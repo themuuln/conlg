@@ -5,7 +5,7 @@ export interface LoggerOptions {
 
 const defaultOptions: LoggerOptions = {
   prefix: '',
-  isDev: process.env.NODE_ENV === 'development',
+  isDev: process.env.SHOW_LOG === 'true',
 };
 
 export const createLogger = (options: LoggerOptions = {}) => {
