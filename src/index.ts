@@ -1,7 +1,22 @@
-const isDev = process.env.NODE_ENV === 'development';
+interface LoggerOptions {
+  prefix?: string;
+  isDev?: boolean;
+}
 
-export const clg = (...args: any[]) => {
-  if (isDev) {
-    console.log(...args);
-  }
+const defaultOptions: LoggerOptions = {
+  prefix: '',
+  isDev: process.env.NODE_ENV === 'development',
 };
+
+export const createLogger = (options: LoggerOptions = {}) => {
+  const { prefix, isDev } = { ...defaultOptions, ...options };
+
+  return (...args: any[]) => {
+    if (isDev) {
+      console.log(prefix, ...args);
+    }
+  };
+};
+
+// Default logger
+export const clg = createLogger();
