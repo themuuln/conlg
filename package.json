@@ -1,14 +1,19 @@
 {
   "name": "conlg",
   "version": "1.0.2",
-  "description": "",
-  "main": "index.js",
+  "description": "A lightweight and customizable logger utility for JavaScript/TypeScript applications.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "logger",
+    "typescript",
+    "utility"
+  ],
+  "author": "Your Name",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.12.12",
