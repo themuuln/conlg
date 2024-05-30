@@ -46,13 +46,13 @@ customLogger('This is a custom log message');
 
 ### Environment-based Logging
 
-The default logger will only output logs if `NODE_ENV` is set to `'development'`.
+The default logger will only output logs if `SHOW_LOG` is set to `'true'`.
 
 ```typescript
-process.env.NODE_ENV = 'development';
+process.env.SHOW_LOG = 'true';
 clg('This message will be logged');
 
-process.env.NODE_ENV = 'production';
+process.env.SHOW_LOG = 'false';
 clg('This message will not be logged');
 ```
 
@@ -70,7 +70,7 @@ interface LoggerOptions {
 ```
 
 - `prefix` (optional): A string to prefix each log message with.
-- `isDev` (optional): A boolean to indicate if logging is enabled. Defaults to `true` if `NODE_ENV` is `'development'`.
+- `isDev` (optional): A boolean to indicate if logging is enabled. Defaults to `true` if `SHOW_LOG` is `'true'`.
 
 ### createLogger
 
