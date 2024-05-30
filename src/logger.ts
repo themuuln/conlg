@@ -1,11 +1,25 @@
+import * as path from 'path';
+import * as fs from 'fs';
+
 export interface LoggerOptions {
   prefix?: string;
   isDev?: boolean;
 }
 
+const loadConfig = (): LoggerOptions => {
+  const configPath = path.resolve(process.cwd(), 'conlg.config.js');
+  if (fs.existsSync(configPath)) {
+    return require(configPath);
+  }
+  return {};
+};
+
+const configOptions = loadConfig();
+
 const defaultOptions: LoggerOptions = {
   prefix: '',
-  isDev: process.env.SHOW_LOG === 'true',
+  isDev: process.env.NODE_ENV === 'development',
+  ...configOptions,
 };
 
 export const createLogger = (options: LoggerOptions = {}) => {
@@ -18,5 +32,4 @@ export const createLogger = (options: LoggerOptions = {}) => {
   };
 };
 
-// Default logger
 export const clg = createLogger();
