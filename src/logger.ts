@@ -13,8 +13,8 @@ export const createLogger = (options: LoggerOptions = {}) => {
 
   return (...args: any[]) => {
     if (isDev) {
-      const loggedArgs = Array.isArray(args) && args.length === 1 && typeof args[0] === 'object' ? JSON.stringify(args[0], null, 4) : args;
-      console.log(prefix, loggedArgs);
+      const loggedArgs = args.length === 1 && typeof args[0] === 'string' ? args[0] : args;
+      console.log(prefix, ...loggedArgs);
     }
   };
 };
